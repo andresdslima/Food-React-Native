@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { FlatList, Image, StyleSheet, Text } from "react-native";
+import { FlatList, Image, StyleSheet, Text, View } from "react-native";
 import yelp from "../api/yelp";
 
 export default function ResultsShowScreen({ navigation }) {
@@ -16,11 +16,15 @@ export default function ResultsShowScreen({ navigation }) {
   }, []);
 
   if (!result) {
-    return <Text style={{ textAlign: "center" }}>Loading...</Text>;
+    return (
+      <Text style={{ textAlign: "center", marginVertical: 10 }}>
+        Loading...
+      </Text>
+    );
   }
 
   return (
-    <>
+    <View style={styles.container}>
       <Text style={styles.title}>{result.name}</Text>
       <Text style={styles.text}>
         {result.location.address1}, {result.location.city}
@@ -33,11 +37,16 @@ export default function ResultsShowScreen({ navigation }) {
           return <Image source={{ uri: item }} style={styles.image} />;
         }}
       />
-    </>
+    </View>
   );
 }
 
 const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    alignItems: "center",
+    backgroundColor: "#fff",
+  },
   image: {
     width: 300,
     height: 200,
