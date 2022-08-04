@@ -10,7 +10,7 @@ import {
 export default function HomeScreen({ navigation }) {
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>iFome</Text>
+      <Text style={styles.title}>iFoome</Text>
       <TouchableOpacity onPress={() => navigation.navigate("Search")}>
         <Image
           source={require("../assets/black-food-icon.png")}
